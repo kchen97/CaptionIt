@@ -9,5 +9,7 @@ target 'CaptionIt' do
 
 pod 'Alamofire'
 pod 'SwiftyJSON'
+pod 'ProgressHUD'
+pod 'SVProgressHUD'
 
 end
