@@ -67,6 +67,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         userImageView.image = image
         getImageData()
         captionDataModel.reset()
+        
         dismiss(animated:true, completion: nil)
     }
     
@@ -80,11 +81,17 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         Alamofire.upload(imageData, to: microsoftURL, method: .post, headers: headers).responseJSON { (response) in
             if response.result.isSuccess {
                 SVProgressHUD.dismiss()
+              
                 let pictureJSON : JSON = JSON(response.result.value!)
                 print(pictureJSON)
                 self.captionDataModel.configure(pictureJSON)
                 self.updateUIWithCaptionData()
 
+            }
+            else {
+                SVProgressHUD.showError(withStatus: "An error occurred analyzing the image.")
+                SVProgressHUD.dismiss(withDelay: 1.50)
+                print(response)
             }
             else {
                 SVProgressHUD.showError(withStatus: "An error occurred analyzing the image.")

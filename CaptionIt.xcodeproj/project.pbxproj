@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		73D2AA12844B74BD20CBBADF /* Pods_CaptionIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D657612197F1982A2F5690EF /* Pods_CaptionIt.framework */; };
+		8E3A7FF820145F2800A4417F /* CaptionDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A7FF720145F2800A4417F /* CaptionDataModel.swift */; };
 		8EA3D9292013E18A0028FA14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA3D9282013E18A0028FA14 /* AppDelegate.swift */; };
 		8EA3D92B2013E18B0028FA14 /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA3D92A2013E18B0028FA14 /* PictureViewController.swift */; };
 		8EA3D92E2013E18B0028FA14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA3D92C2013E18B0028FA14 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		7AD76E426C709E0CECD38334 /* Pods-CaptionIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaptionIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CaptionIt/Pods-CaptionIt.debug.xcconfig"; sourceTree = "<group>"; };
+		8E3A7FF720145F2800A4417F /* CaptionDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionDataModel.swift; sourceTree = "<group>"; };
 		8EA3D9252013E18A0028FA14 /* CaptionIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptionIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA3D9282013E18A0028FA14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA3D92A2013E18B0028FA14 /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 		8EA3D93C2013E19C0028FA14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E3A7FF720145F2800A4417F /* CaptionDataModel.swift */,
 			);
 			name = Model;
 			path = "New Group";
@@ -226,11 +229,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CaptionIt/Pods-CaptionIt-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3A7FF820145F2800A4417F /* CaptionDataModel.swift in Sources */,
 				8EA3D92B2013E18B0028FA14 /* PictureViewController.swift in Sources */,
 				8EA3D9292013E18A0028FA14 /* AppDelegate.swift in Sources */,
 			);

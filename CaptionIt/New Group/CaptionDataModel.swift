@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import SwiftyJSON
 
 class CaptionDataModel {
@@ -50,4 +48,8 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+  
+class CaptionDataModel {
+    var caption = ""
+    var tags = [String]()
 }
