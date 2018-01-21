@@ -79,16 +79,15 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     //MARK: Alamofire
     func getImageData() {
         
-        let params = ["maxCandidates" : "1", "url" : urlPath]
-        let headers: HTTPHeaders = ["Ocp-Apim-Subscription-Key" : "3ef12bba6b2040a2a06934fc85b83ae6", "Content-Type" : "application/json"]
-        
-        Alamofire.request(microsoftURL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+    let headers: HTTPHeaders = ["Ocp-Apim-Subscription-Key" : "3ef12bba6b2040a2a06934fc85b83ae6", "Content-Type" : "application/octet-stream"]
+    let imageData  = UIImageJPEGRepresentation(userImageView.image!, 1.0)!
+
+        Alamofire.upload(imageData, to: microsoftURL, method: .post, headers: headers).responseJSON { (response) in
             if response.result.isSuccess {
-                
-                print(response.result.value!)
+                print(response)
             }
         }
+        
     }
-    
 }
 
