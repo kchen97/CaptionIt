@@ -17,6 +17,7 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     let microsoftURL = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/describe?"
+    private var captionData = CaptionDataModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +64,21 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         userImageView.image = image
         getImageData()
+        captionData.reset()
         
         dismiss(animated:true, completion: nil)
+    }
+    
+    @IBAction func getAnotherCaptionPressed(_ sender: UIBarButtonItem) {
+        if userImageView.image != nil {
+            updateUIWithCaptionData()
+        }
+    }
+    
+    func updateUIWithCaptionData() {
+        if let caption = captionData.getCaption() {
+            captionLabel.text = caption
+        }
     }
     
     //MARK: Alamofire
@@ -77,6 +91,9 @@ class PictureViewController: UIViewController, UIImagePickerControllerDelegate, 
         Alamofire.upload(imageData, to: microsoftURL, method: .post, headers: headers).responseJSON { (response) in
             if response.result.isSuccess {
                 SVProgressHUD.dismiss()
+                let pictureJSON : JSON = JSON(response.result.value!)
+                self.captionData.configure(pictureJSON)
+                self.updateUIWithCaptionData()
                 print(response)
             }
             else {
