@@ -7,7 +7,48 @@
 //
 
 import Foundation
+import SwiftyJSON
 
+class CaptionDataModel {
+    var caption = ""
+    var tags = [String]()
+    
+    func configure(_ json: JSON) {
+        if let items = json["description"]["tags"].array {
+            for index in 0..<items.count {
+                tags.append(items[index].stringValue)
+            }
+        }
+        
+        caption = json["description"]["captions"][0]["text"].stringValue
+        caption.capitalizeFirstLetter()
+    }
+    
+    func getCaption() -> String? {
+        if tags.isEmpty {
+            return nil
+        }
+        let randomNumber = Int(arc4random_uniform(UInt32(tags.count)))
+        let coolHashTag = " #\(tags[randomNumber])"
+        
+        return caption + coolHashTag
+    }
+    
+    func reset() {
+        caption = ""
+        tags.removeAll()
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+  
 class CaptionDataModel {
     var caption = ""
     var tags = [String]()
